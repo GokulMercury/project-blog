@@ -1,7 +1,8 @@
 doctype html
 html 
     head 
-        title Admin Dashboard 
+        title Admin Dashboard
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
     Body
         div 
             container 
@@ -14,11 +15,9 @@ html
                             li.nav-item
                                 a.nav-link(href='/auth/logout') Logout
         h1 Admin Dashboard
-        h3 
+        h5 
             a(href="/article/manage/topics") Manage Topics
-        h3 
+        h5 
             a(href="/user/admin/topicmanagers/manage") Manage Topic Managers
-        h3 
+        h5 
             a(href="/user/admin/manage/users") Manage Users
-        br
-        a(href="/auth/logout") Logout

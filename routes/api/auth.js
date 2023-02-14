@@ -39,27 +39,29 @@ router.route('/login')
                     if (response[0].userId === req.body.userId && validPassword){
                         req.session.userId = response[0]._id;
                         //To find the total rating of a user
-                        Articles.aggregate([
-                            { $match: 
-                                { blogOwnerId:req.session.userId.toString()} },
-                            { $group: { _id: "$blogOwnerId", totalRating: { $sum: "$blogRating" } } }
-                          ], (err,response)=>{
-                            console.log(response[0].totalRating)
-                            if (response[0].totalRating > 50){
-                                req.session.userCategory = 'premium';
-                                req.session.save();
-                                console.log('USER CATEGORY',req.session.userCategory)
-                            } else {
-                                req.session.userCategory = 'basic';
-                                req.session.save();
-                                console.log('USER CATEGORY',req.session)
-                            }
-                        })
+                        
                         console.log(req.session)
                         if (response[0].userRole =='admin'){
                             console.log('Admin');
                             res.redirect('/user/admin/dashboard');
                         } else{
+                            Articles.aggregate([
+                                { $match: 
+                                    { blogOwnerId:req.session.userId.toString()} },
+                                { $group: { _id: "$blogOwnerId", totalRating: { $sum: "$blogRating" } } }
+                              ], (err,response)=>{
+                                console.log(response[0].totalRating)
+                                if (response[0].totalRating > 50){
+                                    req.session.userCategory = 'premium';
+                                    req.session.save();
+                                    console.log('USER CATEGORY',req.session.userCategory)
+                                } else {
+                                    console.log('Basic');
+                                    req.session.userCategory = 'basic';
+                                    req.session.save();
+                                    console.log('USER CATEGORY',req.session)
+                                }
+                            })
                             res.redirect('/user/dashboard');
                         }
                     } 
@@ -111,7 +113,7 @@ router.route('/login/topicmanager')
                                 if (err) {
                                     // Handle the error here
                                   }
-                                  res.render('topic_manager_dashboard', {articles: articles.reverse(), topicName:topics[0].topicName});
+                                  res.render('topic_manager_dashboard', {articles: articles, topicName:topics[0].topicName});
                             })
                             // Topics.find({_id:response[0].topicId}, (err,))
                             
