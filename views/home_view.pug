@@ -26,9 +26,14 @@ html
             if (error || type)
                 p(style={color:"red"}) #{message}
         each article in articles
-            h3(style={color:"red"})= article.blogTitle
-            p= article.blogContent.slice(0, 150) + '...'
-            a.nav-link(href='/article/details/'+article._id) Read More
-            //- br
-            //- h6 Rating: #{article.averageRating} / 5
-            hr
+            .card
+                .card-body
+                    h5(style={color:"#3f50b5"}).card-title= article.blogTitle
+                    p.card-text= article.blogContent.slice(0, 150) + '...'
+                    a.btn.btn-primary(href='/article/details/'+article._id) Learn more
+            //- h3(style={color:"red"})= article.blogTitle
+            //- p= article.blogContent.slice(0, 150) + '...'
+            //- a.nav-link(href='/article/details/'+article._id) Read More
+            //- //- br
+            //- //- h6 Rating: #{article.averageRating} / 5
+            //- hr

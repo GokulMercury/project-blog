@@ -23,7 +23,7 @@ html
                                 li.nav-item
                                     a.nav-link(href='/auth/signup') Signup
         each article in articles
-            h3(style={color:"red"})= article.blogTitle
+            h5(style={color:"#3f50b5"})= article.blogTitle
             p= article.blogContent
             form(action="/article/"+article._id+"/rating" method="post")
                 select(name='blogRating')
@@ -41,4 +41,4 @@ html
                 input(type="Submit", value="Post comment")
                 br
                 each comment in blogComments
-                    h3= comment.commentText
+                    h5= "> "+comment.commentText
