@@ -1,0 +1,21 @@
+doctype html 
+html 
+    head 
+        title Manage Articles | Add Article
+    body 
+        div 
+            container 
+                nav.navbar.navbar-expand-lg.navbar-light
+                    a.navbar-brand(href='/') BloggerHub
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNav.collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/auth/logout') Logout
+        h1 Manage Articles
+        #error
+            if (error)
+                p(style={color:"red"}) #{error}
+        h3 
+            a(href="/article/add") Add Article

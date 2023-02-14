@@ -1,0 +1,31 @@
+doctype html
+html 
+    head 
+        title Manage Topic Managers
+    Body
+        div 
+            container 
+                nav.navbar.navbar-expand-lg.navbar-light
+                    a.navbar-brand(href='/') BloggerHub
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNav.collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/auth/logout') Logout
+        h1 Manage Topic Managers
+        #error
+            if (error || type)
+                p(style={color:"red"}) #{message}
+        br
+        a(href="/auth/logout") Logout
+        h3 
+            a(href="/user/admin/topicmanagers/add") Add Topic Manager
+        hr 
+        h1 User List
+        each topicmanager in topicmanagers
+            h3= topicmanager.userFullname
+            a(href="/user/admin/topicmanagers/edit/"+topicmanager._id) Edit
+            br
+            a.button(href='/user/admin/topicmanagers/delete/'+ topicmanager._id onclick="return confirm('Do you really want to delete?');") Delete
+            hr

@@ -1,0 +1,24 @@
+doctype html
+html 
+    head 
+        title Admin Dashboard 
+    Body
+        div 
+            container 
+                nav.navbar.navbar-expand-lg.navbar-light
+                    a.navbar-brand(href='/') BloggerHub
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNav.collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/auth/logout') Logout
+        h1 Admin Dashboard
+        h3 
+            a(href="/article/manage/topics") Manage Topics
+        h3 
+            a(href="/user/admin/topicmanagers/manage") Manage Topic Managers
+        h3 
+            a(href="/user/admin/manage/users") Manage Users
+        br
+        a(href="/auth/logout") Logout

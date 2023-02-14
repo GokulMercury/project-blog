@@ -1,0 +1,28 @@
+doctype html
+html 
+    head 
+        title Homepage
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    Body
+        div 
+            container 
+                nav.navbar.navbar-expand-lg.navbar-light
+                    a.navbar-brand(href='/') BloggerHub
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNav.collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/auth/login') Login
+                            li.nav-item
+                                a.nav-link(href='/auth/signup') Signup
+        #error
+            if (error || type)
+                p(style={color:"red"}) #{message}
+        each article in articles
+            h3(style={color:"red"})= article.blogTitle
+            p= article.blogContent.slice(0, 150) + '...'
+            a.nav-link(href='/article/details/'+article._id) Read More
+            //- br
+            //- h6 Rating: #{article.averageRating} / 5
+            hr

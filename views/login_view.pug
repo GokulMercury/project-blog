@@ -1,0 +1,34 @@
+doctype html 
+html 
+    head 
+        title Website | Login 
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    body
+        div 
+            container 
+                nav.navbar.navbar-expand-lg.navbar-light
+                    a.navbar-brand(href='/') BloggerHub
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNav.collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/auth/login') Login
+                            li.nav-item
+                                a.nav-link(href='/auth/signup') Signup 
+        h3 Login
+        #error
+            if (error)
+                p(style={color:"red"}) #{error}
+        form(action="/auth/login" method="post")
+            label(for ="userId") Enter Email Address: 
+            input(type="text" name="userId")
+            br
+            label(for ="userPassword") Enter password: 
+            input(type="password" name="userPassword")
+            br
+            input(type="Submit", value="Login")
+            br
+            br
+        h5 Are you a topic manager?.
+        a.nav-link(href='/auth/login/topicmanager') Login here

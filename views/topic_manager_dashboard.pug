@@ -1,0 +1,34 @@
+doctype html
+html 
+    head 
+        title Topic Manager Dashboard
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    Body
+        div 
+            container 
+                nav.navbar.navbar-expand-lg.navbar-light
+                    a.navbar-brand(href='/') BloggerHub
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNav.collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/auth/logout') Logout
+        h1 Topic Manager Dashboard 
+        br
+        h3 Topic: #{topicName}
+        br
+        each article in articles
+            h3(style={color:"red"})= article.blogTitle
+            p= article.blogContent
+            if(article.adminApproved==0)
+                a(href="/article/approveReject/"+article._id+"/approve") Approve
+                br
+                a(href="/article/approveReject/"+article._id+"/reject") Reject
+            else
+                if(article.adminApproved==1) 
+                    a(href="/article/approveReject/"+article._id+"/reject") Reject
+                else 
+                    if(article.adminApproved==2)
+                        a(href="/article/approveReject/"+article._id+"/approve") Approve
+            hr

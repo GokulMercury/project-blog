@@ -1,0 +1,38 @@
+doctype html 
+html 
+    head 
+        title Manage Topic Managers
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    body
+        body
+        div 
+            container 
+                nav.navbar.navbar-expand-lg.navbar-light
+                    a.navbar-brand(href='/') BloggerHub
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNav.collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/auth/logout') Logout
+        h3 Edit Topic Managers
+        p Please enter details
+        #error
+            if (error)
+                p(style={color:"red"}) #{error}
+        form(action="/user/admin/topicmanagers/edit" method="post")
+            label(for ="topicId") Topic: 
+            select(name='topicId')
+                each topic in topics
+                    option(value=topic._id)= topic.topicName
+            br
+            label(for ="userId") Enter Email Address: 
+            input(type="text" name="userId" value=topicmanager[0].userId)
+            br
+            label(for ="userFullname") Enter Fullname: 
+            input(type="text" name="userFullname" value=topicmanager[0].userFullname)
+            br
+            label(for ="userPassword") Enter new password: 
+            input(type="password" name="userPassword")
+            br
+            input(type="Submit", value="Update")

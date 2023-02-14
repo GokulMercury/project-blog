@@ -1,0 +1,1 @@
+{"options":{"capped":true,"size":{"$numberInt":"6142976"},"max":{"$numberInt":"10000"},"autoIndexId":true},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"6e430ff0d43a4b86b7a9af0b4eb77164","collectionName":"cars","type":"collection"}

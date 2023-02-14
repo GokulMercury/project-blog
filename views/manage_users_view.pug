@@ -1,0 +1,32 @@
+doctype html
+html 
+    head 
+        title Manage Users
+    Body
+        div 
+            container 
+                nav.navbar.navbar-expand-lg.navbar-light
+                    a.navbar-brand(href='/') BloggerHub
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNav.collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/auth/logout') Logout
+        h1 Manage Users
+        #error
+            if (error || type)
+                p(style={color:"red"}) #{message}
+        br
+        a(href="/auth/logout") Logout
+        h3 
+            a(href="/user/admin/topicmanagers/add") Add Topic Manager
+        hr 
+        h1 Users
+        each user in users
+            h3= user.userFullname
+            if(user.adminApproved==0)
+                a(href="/user/admin/manage/users/approvereject/"+user._id+"/approve") Approve
+            else
+                a(href="/user/admin/manage/users/approvereject/"+user._id+"/reject") Reject
+            hr

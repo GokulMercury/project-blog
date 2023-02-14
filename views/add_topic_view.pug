@@ -1,0 +1,29 @@
+doctype html 
+html 
+    head 
+        title Website | Add topic
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    body 
+        div 
+            container 
+                nav.navbar.navbar-expand-lg.navbar-light
+                    a.navbar-brand(href='/') BloggerHub
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNav.collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/auth/logout') Logout
+    body 
+        #error
+            if (error)
+                p(style={color:"red"}) #{error}
+        form(action="/article/add/topic" method="post")
+            label(for ="topicName") Enter Blog Topic: 
+            input(type="text" name="topicName")
+            br
+            label(for ="topicDescription") Topic Description: 
+            textarea(name='topicDescription')
+            br
+            br
+            input(type="Submit", value="Add Topic")
