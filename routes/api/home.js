@@ -10,13 +10,13 @@ const Topics = require('../../model/topic_model.js');
 
 router.route('/')
 .get(async (req,res)=>{
-  const user = req.session.userCategory;
+  const userId = req.session.userId;
   console.log(req.session)
     Articles.find({adminApproved:1}, (err, articles) => {
         if (err) {
           // Handle the error here
         }
-        res.render('home_view', {articles:articles.reverse()});
+        res.render('home_view', {articles:articles.reverse(),userId});
       });
 })
 

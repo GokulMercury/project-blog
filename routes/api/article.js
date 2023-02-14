@@ -8,6 +8,7 @@ mongoose.connect('mongodb://localhost/blog');
 
 const Articles = require('../../model/article_model.js');
 const Topics = require('../../model/topic_model.js');
+const { rawListeners } = require('../../model/article_model.js');
 
 const authenticate = (req, res, next) => {
   if (req.session && req.session.userId) {
@@ -106,7 +107,7 @@ router.route('/details/:id')
       const post = await Articles.findById(req.params.id);
       const blogComments = post.blogComment;
       console.log(blogComments)
-      res.render('article_details_view', {articles:articles, blogComments});
+      res.render('article_details_view', {articles:articles, blogComments, userId: req.session.userId});
     })
   )
 })
@@ -246,7 +247,7 @@ router.route('/:id/addcomment')
       const post = await Articles.findById(req.params.id);
       const blogComments = post.blogComment;
       console.log(blogComments)
-      res.render('article_details_view', {articles:articles, blogComments});
+      res.render('article_details_view', {articles:articles, blogComments, userId: req.session.userId});
     })
   )
   });
@@ -278,7 +279,7 @@ router.route('/:id/rating')
                 const post = await Articles.findById(req.params.id);
                 const blogComments = post.blogComment;
                 console.log(blogComments)
-                res.render('article_details_view', {articles:articles, blogComments: blogComments});
+                res.render('article_details_view', {articles:articles, blogComments: blogComments, userId: req.session.userId});
               })
             )
           }
